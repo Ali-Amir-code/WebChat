@@ -7,13 +7,21 @@ export default defineConfig({
   server: {
     proxy: {
       '/socket.io': {
-        target: 'http://localhost:3000',
-        ws: true
+        target: 'http://localhost:5000',
+        ws: true,
+        changeOrigin: true,
+        secure: false
       },
-      '/api': 'http://localhost:3000'
-    }
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        secure: false
+      }
+    },
+    host: true,
+    port: 5173,
   },
-   build: {
+  build: {
     outDir: '../dist', // Build to root directory
     emptyOutDir: true
   }

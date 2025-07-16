@@ -1,11 +1,10 @@
 import { io } from 'socket.io-client';
 
-// Determine connection URL
 const getSocketUrl = () => {
   if (import.meta.env.PROD) {
-    return window.location.origin; // Same as frontend in production
+    return window.location.origin; 
   } else {
-    return 'http://localhost:5000'; // Backend server in dev
+    return 'http://localhost:5000'; 
   }
 };
 
