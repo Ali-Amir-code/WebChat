@@ -31,15 +31,15 @@ const io = new Server(server, {
   }
 });
 
-// Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
-  const frontendPath = path.join(__dirname, '../../dist');
+  const frontendPath = path.join(__dirname, 'client', 'dist');
   app.use(express.static(frontendPath));
 
-  app.get('*', (req, res) => {
+  app.get('/', (req, res) => {
     res.sendFile(path.join(frontendPath, 'index.html'));
   });
 }
+
 
 // Socket.IO connection handler
 io.on('connection', (socket) => {
@@ -98,7 +98,6 @@ router.post('/addUserResponse', (req, res) => {
 
 router.post('/login', (req, res) => {
   console.log(req.body);
-  // Check if username already exists in users (BiMap) values
   if (users.hasValue(req.body.username)) {
     return res.json({
       success: false,
