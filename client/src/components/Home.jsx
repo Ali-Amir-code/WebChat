@@ -30,10 +30,10 @@ const Home = ({ currentContact, setCurrentContact }) => {
     <Routes>
       <Route
         path=""
-        element={<ContactList setCurrentContact={setCurrentContact} />}
+        element={<ContactList setScreenOpen={setScreenOpen} setCurrentContact={setCurrentContact} />}
       />
       <Route
-        path="chat"
+        path="/chat"
         element={
           <MessageScreen
             contact={currentContact}

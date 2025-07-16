@@ -16,7 +16,7 @@ export default function CustomSnackbar({ open, duration, content, setOpen }) {
 
   let styles = isMobile? {
     position: "fixed",
-    left: -400,
+    left: -300,
   } : {};
 
   const handleClose = (event, reason) => {

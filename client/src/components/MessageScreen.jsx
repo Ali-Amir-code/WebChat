@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 import { Box, useTheme, useMediaQuery } from "@mui/material";
@@ -58,16 +58,13 @@ export default function MessageScreen({ contact, setScreenOpen, setContact }) {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!contact) {
-      navigate("/");
-    }
-  }, [contact, navigate]);
-
-  if (!contact) return null;
+  useEffect(()=>{
+    if(isMobile && !contact) navigate("/")
+  }, [isMobile, contact, navigate])
 
   function handleCloseScreen() {
     setText("");
+    setContact(null);
     isMobile ? navigate("/") : setScreenOpen(false);
   }
 
@@ -111,7 +108,7 @@ export default function MessageScreen({ contact, setScreenOpen, setContact }) {
       }}
     >
       <MessageScreenHeader
-        name={contact.username}
+        name={contact.username || ""}
         type={contact.type}
         handleCloseScreen={handleCloseScreen}
       />

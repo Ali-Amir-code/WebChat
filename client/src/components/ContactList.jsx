@@ -24,12 +24,6 @@ export default function ContactList({ setScreenOpen, setCurrentContact }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  useEffect(() => {
-    if (isMobile) {
-      setCurrentContact(null);
-    }
-  });
-
   /**
    * Handles a contact being selected by the user. If the user is on a mobile
    * device, the app navigates to the chat screen. If the user is on a larger
